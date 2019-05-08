@@ -1,0 +1,95 @@
+﻿@model Budget.Web.Mvc.Models.FinancialVm.FinancialItemlVm
+
+<style>
+    label {
+        margin-top: 4px !important;
+    }
+</style>
+
+<div class="row">
+    @Html.HiddenFor(model => model.Id)
+
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.TransactionDate)
+            </div>
+            <div class="col-md-8">
+                @Html.EditorFor(model => model.TransactionDate, new { htmlAttributes = new { @class = "form-control datepicker" } })
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.Amount)
+            </div>
+            <div class="col-md-8">
+                @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.Description)
+            </div>
+            <div class="col-md-8">
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.TransactionType)
+            </div>
+            <div class="col-md-8">
+                @Html.DropDownListFor(model => model.TransactionType.SelectedItem, Model.TransactionType.SourceList, new Dictionary<string, object>
+            {
+                { "class", "form-control selectpicker" },
+                { "data-live-search", "true" }
+            })
+            </div>
+        </div>
+
+        <div class="row" id="outScoreDiv">
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.OutScore)
+            </div>
+            <div class="col-md-8">
+                @Html.DropDownListFor(model => model.OutScore.SelectedItem, Model.OutScore.SourceList, "", new Dictionary<string, object>
+            {
+                { "class", "form-control selectpicker" },
+                { "data-live-search", "true" }
+            })
+            </div>
+        </div>
+
+        <div class="row" id="inScoreDiv">
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.InScore)
+            </div>
+            <div class="col-md-8">
+                @Html.DropDownListFor(model => model.InScore.SelectedItem, Model.InScore.SourceList, "", new Dictionary<string, object>
+            {
+                { "class", "form-control selectpicker" },
+                { "data-live-search", "true" }
+            })
+            </div>
+        </div>
+
+        <div class="row" id="transferDiv">
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.TransactionCategory)
+            </div>
+            <div class="col-md-8">
+                @Html.DropDownListFor(model => model.TransactionCategory.SelectedItem, Model.TransactionCategory.SourceList, "", new Dictionary<string, object>
+            {
+                { "class", "form-control selectpicker" },
+                { "data-live-search", "true" }
+            })
+            </div>
+        </div>
+    </div>
+
+</div>

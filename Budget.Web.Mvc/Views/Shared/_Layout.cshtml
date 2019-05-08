@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.PageTitle</title>
+    @Styles.Render("~/Content/bootstrap")
+    @Styles.Render("~/Content/bselect")
+    @Styles.Render("~/Content/datepicker")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Главная", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Сводка", "BudgetView")</li>
+                    <li>@Html.ActionLink("Планировщик", "ScheduleView")</li>
+                    <li>@Html.ActionLink("Счета", "ScoreView")</li>
+                    <li>@Html.ActionLink("Категории", "CategoryView")</li>
+                    <li>@Html.ActionLink("Финансовый учет", "FinancialView")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid" style="margin-top:20px;">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <h1 class="page-header">@ViewBag.PageTitle</h1>
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/bselect")
+    @Scripts.Render("~/bundles/datepicker")
+
+    @RenderSection("scripts", required: false)
+    <script type="text/javascript">
+        $(function () {
+            $(".datepicker").datepicker({
+                todayBtn: "linked",
+                language: "ru",
+                autoclose: true,
+                todayHighlight: true,
+                dateFormat: 'dd/mm/yyyy'
+            });
+        });
+
+        $("#scoreTypeDropDown")
+      .change(function () {
+          var str = "";
+          $("#scoreTypeDropDown option:selected").each(function () {
+              if ($(this).val() == "Credit") {
+                  $('#creditSection').show();
+              }
+              else {
+                  $('#creditSection').hide();
+              }
+          });
+      })
+      .change();
+
+        $("select#NewItem_TransactionType_SelectedItem")
+     .change(function () {
+         $("select#NewItem_TransactionType_SelectedItem option:selected").each(function () {
+             if ($(this).val() === "Incoming") {
+                 $('#outScoreDiv').hide();
+                 $('#inScoreDiv').show();
+                 $('#transferDiv').show();
+             }
+             else if ($(this).val() === "Outcoming") {
+                 $('#outScoreDiv').show();
+                 $('#inScoreDiv').hide();
+                 $('#transferDiv').show();
+             }
+             else {
+                 $('#outScoreDiv').show();
+                 $('#inScoreDiv').show();
+                 $('#transferDiv').hide();
+             }
+         });
+     })
+     .change();
+    </script>
+</body>
+</html>

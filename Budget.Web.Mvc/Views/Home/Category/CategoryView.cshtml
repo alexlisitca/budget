@@ -1,0 +1,97 @@
+﻿@model Budget.Web.Mvc.Models.CategoryVm.CategoryListVm
+
+@{
+    ViewBag.PageTitle = "Мои категории";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*@helper ShowTree(IEnumerable<Budget.Web.Mvc.Models.CategoryVm.CategoryItemVm> categories)
+{
+    <ul class="list-group">
+        @foreach (var category in categories)
+        {
+            <li class="list-group-item">
+                @Html.ActionLink(category.Name, "CategoryView", new { id = category.Id })
+                <span class="pull-right">@Html.ActionLink(" ", "DeleteCategory", new { id = category.Id }, new { @class = "glyphicon glyphicon-remove" })</span>
+                
+                @if (category.Children.Any())
+                {
+                    @ShowTree(category.Children)
+                }
+            </li>
+        }
+    </ul>
+}*@
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                @if ((Model.NewItem.Id != null) && (Model.NewItem.Id != Guid.Empty))
+            {
+                    <span>Редактирование категории</span>
+                }
+                else
+                {
+                    <span>Добавление категории</span>
+                }
+            </div>
+            <div class="panel-body">
+                @using (Html.BeginForm("AddOrUpdateCategory", "Home", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.EditorFor(vm => vm.NewItem)
+                    <div class="row" style="margin-top:5px;">
+                        <div class="col-md-12">
+                            <input type="submit" value="Сохранить" class="btn btn-sm btn-success" />
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-success">
+            <div class="panel-heading">Доходные</div>
+            <div class="panel-body">
+               <ul class="list-group">
+                   @foreach (var item in Model.AllRows.Where(x => x.Type.SelectedItem == "Доход"))
+                   {
+                    <li class="list-group-item">
+                        @Html.ActionLink(item.Name, "CategoryView", new { id = item.Id }, new { @class = "label" })
+                        <span class="pull-right">@Html.ActionLink(" ", "DeleteCategory", new { id = item.Id }, new { @class = "glyphicon glyphicon-remove" })</span>
+                    </li>
+                   }
+               </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-danger">
+            <div class="panel-heading">Расходные</div>
+            <div class="panel-body">
+                <ul class="list-group">
+                    @foreach (var item in Model.AllRows.Where(x => x.Type.SelectedItem == "Расход"))
+                    {
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    @Html.ActionLink(item.Name, "CategoryView", new { id = item.Id })
+                                </div>
+                                <div class="col-md-4">
+                                    @item.ParrentCategory.SelectedItemText
+                                </div>
+                                <div class="col-md-4">
+                                    <span class="pull-right">@Html.ActionLink(" ", "DeleteCategory", new { id = item.Id }, new { @class = "glyphicon glyphicon-remove" })</span>
+                                </div>
+                            </div>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

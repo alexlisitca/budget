@@ -1,0 +1,32 @@
+﻿@model Budget.Domain.Core.Entity.Score
+
+<div class="col-md-4">
+    <div class="panel panel-default" style="max-width:320px; min-width:320px; width: 320px;">
+        <div class="panel-heading">
+            @Html.DisplayFor(vm => vm.Name)
+            <div class="text-muted pull-right">
+                @Html.DisplayFor(vm => vm.Description)
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+
+                <div class="col-md-3">
+                    <img src="~/Images/score.png" width="50" height="50" class="img-responsive" alt="Счет">
+                </div>
+                <div class="col-md-9">
+                    <label class="form-control">Баланс: @string.Format("{0} руб.", Model.Balance.ToString("0.00"))</label>
+                </div>
+
+                @if (Model.ScoreType == Budget.Domain.Core.Enums.ScoreTypes.Credit)
+            {
+                    <div class="col-md-9 col-md-offset-3">
+
+                        <label class="form-control bg-danger">Долг: @string.Format("{0} руб.", Model.CreditDebts.ToString("0.00"))</label>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>

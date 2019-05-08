@@ -1,0 +1,68 @@
+﻿@model Budget.Web.Mvc.Models.FinancialVm.FinancialListVm
+@{
+    ViewBag.PageTitle = "Финансовый учет";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                @if ((Model.NewItem.Id != null) && (Model.NewItem.Id != Guid.Empty))
+            {
+                    <span>Редактирование операции</span>
+                }
+                else
+                {
+                    <span>Добавление операции</span>
+                }
+            </div>
+            <div class="panel-body">
+                @using (Html.BeginForm("AddOrUpdateFinancial", "Home", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.EditorFor(vm => vm.NewItem)
+                    <div class="row" style="margin-top:5px;">
+                        <div class="col-md-12">
+                            <input type="submit" value="Сохранить" class="btn btn-sm btn-success" />
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row" style="padding-top:10px;">
+    <div class="col-md-12">
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <tr>
+                    <th>Дата</th>
+                    <th>Сумма</th>
+                    <th>Коментарий</th>
+                    <th>Тип</th>
+                    <th>Категория</th>
+                    <th>Из</th>
+                    <th>В</th>
+                    <th>Удалить</th>
+                </tr>
+
+                @foreach (var item in Model.AllRows)
+            {
+                    <tr>
+                        <td>@item.TransactionDate.ToString("dd.MM.yyyy")</td>
+                        <td>@Html.ActionLink(item.Amount.ToString(), "FinancialView", new { id = item.Id })</td>
+                        <td>@item.Description</td>
+                        <td>@item.TransactionType.SelectedItemText</td>
+                        <td>@item.TransactionCategory.SelectedItemText</td>
+                        <td>@item.OutScore.SelectedItemText</td>
+                        <td>@item.InScore.SelectedItemText</td>
+                        <td>
+                            @Html.ActionLink(" ", "DeleteFinancial", new { id = item.Id }, new { @class = "glyphicon glyphicon-remove" })
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>

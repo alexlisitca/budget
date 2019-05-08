@@ -1,0 +1,98 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{33EF0886-4B89-47D8-AF96-8FE38282FEFB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{73B6BB92-8958-4F77-A757-499E6734F8EB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{F0CE428E-5CA0-4A2B-9229-DC4BDFAB57D2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{A2A4D567-E1BD-4E97-BE70-808F0DEAD309}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Budget.Domain.Core", "Budget.Domain.Core\Budget.Domain.Core.csproj", "{72B7A7E5-2311-45D0-9A8A-295CB53B7C96}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Budget.Domain.Interfaces", "Budget.Domain.Interfaces\Budget.Domain.Interfaces.csproj", "{2D1B1615-5D98-454C-BD98-BFEB3DED6459}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Budget.Infrastructure.Business", "Budget.Infrastructure.Business\Budget.Infrastructure.Business.csproj", "{E10A7C56-C669-421B-A7F1-0128681AF666}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Budget.Infrastructure.Data", "Budget.Infrastructure.Data\Budget.Infrastructure.Data.csproj", "{7829DCF7-C2D5-4DD9-AD85-226464D084A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Budget.Services.Interfaces", "Budget.Services.Interfaces\Budget.Services.Interfaces.csproj", "{EE1A4D0E-764F-4759-A54E-AF7A40355953}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Budget.Web.Mvc", "Budget.Web.Mvc\Budget.Web.Mvc.csproj", "{56841958-577E-496C-A24B-2D31C1EA1D40}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{72B7A7E5-2311-45D0-9A8A-295CB53B7C96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72B7A7E5-2311-45D0-9A8A-295CB53B7C96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72B7A7E5-2311-45D0-9A8A-295CB53B7C96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72B7A7E5-2311-45D0-9A8A-295CB53B7C96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D1B1615-5D98-454C-BD98-BFEB3DED6459}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D1B1615-5D98-454C-BD98-BFEB3DED6459}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D1B1615-5D98-454C-BD98-BFEB3DED6459}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D1B1615-5D98-454C-BD98-BFEB3DED6459}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E10A7C56-C669-421B-A7F1-0128681AF666}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E10A7C56-C669-421B-A7F1-0128681AF666}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E10A7C56-C669-421B-A7F1-0128681AF666}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E10A7C56-C669-421B-A7F1-0128681AF666}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7829DCF7-C2D5-4DD9-AD85-226464D084A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7829DCF7-C2D5-4DD9-AD85-226464D084A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7829DCF7-C2D5-4DD9-AD85-226464D084A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7829DCF7-C2D5-4DD9-AD85-226464D084A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE1A4D0E-764F-4759-A54E-AF7A40355953}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE1A4D0E-764F-4759-A54E-AF7A40355953}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE1A4D0E-764F-4759-A54E-AF7A40355953}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE1A4D0E-764F-4759-A54E-AF7A40355953}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56841958-577E-496C-A24B-2D31C1EA1D40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56841958-577E-496C-A24B-2D31C1EA1D40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56841958-577E-496C-A24B-2D31C1EA1D40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56841958-577E-496C-A24B-2D31C1EA1D40}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{72B7A7E5-2311-45D0-9A8A-295CB53B7C96} = {73B6BB92-8958-4F77-A757-499E6734F8EB}
+		{2D1B1615-5D98-454C-BD98-BFEB3DED6459} = {73B6BB92-8958-4F77-A757-499E6734F8EB}
+		{E10A7C56-C669-421B-A7F1-0128681AF666} = {F0CE428E-5CA0-4A2B-9229-DC4BDFAB57D2}
+		{7829DCF7-C2D5-4DD9-AD85-226464D084A9} = {F0CE428E-5CA0-4A2B-9229-DC4BDFAB57D2}
+		{EE1A4D0E-764F-4759-A54E-AF7A40355953} = {A2A4D567-E1BD-4E97-BE70-808F0DEAD309}
+		{56841958-577E-496C-A24B-2D31C1EA1D40} = {33EF0886-4B89-47D8-AF96-8FE38282FEFB}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 7
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://alexandrlisitsa.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Budget.Domain.Core\\Budget.Domain.Core.csproj
+		SccProjectTopLevelParentUniqueName1 = Budget.sln
+		SccProjectName1 = Budget.Domain.Core
+		SccLocalPath1 = Budget.Domain.Core
+		SccProjectUniqueName2 = Budget.Domain.Interfaces\\Budget.Domain.Interfaces.csproj
+		SccProjectTopLevelParentUniqueName2 = Budget.sln
+		SccProjectName2 = Budget.Domain.Interfaces
+		SccLocalPath2 = Budget.Domain.Interfaces
+		SccProjectUniqueName3 = Budget.Infrastructure.Business\\Budget.Infrastructure.Business.csproj
+		SccProjectTopLevelParentUniqueName3 = Budget.sln
+		SccProjectName3 = Budget.Infrastructure.Business
+		SccLocalPath3 = Budget.Infrastructure.Business
+		SccProjectUniqueName4 = Budget.Infrastructure.Data\\Budget.Infrastructure.Data.csproj
+		SccProjectTopLevelParentUniqueName4 = Budget.sln
+		SccProjectName4 = Budget.Infrastructure.Data
+		SccLocalPath4 = Budget.Infrastructure.Data
+		SccProjectUniqueName5 = Budget.Services.Interfaces\\Budget.Services.Interfaces.csproj
+		SccProjectTopLevelParentUniqueName5 = Budget.sln
+		SccProjectName5 = Budget.Services.Interfaces
+		SccLocalPath5 = Budget.Services.Interfaces
+		SccProjectUniqueName6 = Budget.Web.Mvc\\Budget.Web.Mvc.csproj
+		SccProjectTopLevelParentUniqueName6 = Budget.sln
+		SccProjectName6 = Budget.Web.Mvc
+		SccLocalPath6 = Budget.Web.Mvc
+	EndGlobalSection
+EndGlobal

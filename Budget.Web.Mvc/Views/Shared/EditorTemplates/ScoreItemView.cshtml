@@ -1,0 +1,116 @@
+﻿@model Budget.Web.Mvc.Models.ScoreVm.ScoreItemVm
+
+<style>
+    label {
+        margin-top: 4px !important;
+    }
+</style>
+
+<div class="row">
+    @Html.HiddenFor(model => model.Id)
+    <div class="col-md-4 col-sm-4">
+        <div class="row">
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.ScoreType)
+            </div>
+            <div class="col-md-9">
+                @Html.DropDownListFor(model => model.ScoreType.SelectedItem, Model.ScoreType.SourceList, new Dictionary<string, object>
+            {
+                { "class", "form-control selectpicker" },
+                { "data-live-search", "true" },
+                { "id", "scoreTypeDropDown" }
+            })
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.Name)
+            </div>
+            <div class="col-md-9">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.Description)
+            </div>
+            <div class="col-md-9">
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 col-sm-4">
+
+        <div class="row">
+            <div class="col-md-5">
+                @Html.LabelFor(model => model.OrderId)
+            </div>
+            <div class="col-md-7">
+                @Html.EditorFor(model => model.OrderId, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-5">
+                @Html.LabelFor(model => model.Balance)
+            </div>
+            <div class="col-md-7">
+                @Html.EditorFor(model => model.Balance, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-5">
+                @Html.LabelFor(model => model.InitBalance)
+            </div>
+            <div class="col-md-7">
+                @Html.EditorFor(model => model.InitBalance, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-4 col-sm-4">
+        <div id="creditSection">
+
+            <div class="row">
+                <div class="col-md-7">
+                    @Html.LabelFor(model => model.CreditDebts)
+                </div>
+                <div class="col-md-5">
+                    @Html.EditorFor(model => model.CreditDebts, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-7">
+                    @Html.LabelFor(model => model.CreditLimit)
+                </div>
+                <div class="col-md-5">
+                    @Html.EditorFor(model => model.CreditLimit, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-7">
+                    @Html.LabelFor(model => model.CreditMinPayment)
+                </div>
+                <div class="col-md-5">
+                    @Html.EditorFor(model => model.CreditMinPayment, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-8">
+                    @Html.LabelFor(model => model.CreditPaymentDate)
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.CreditPaymentDate, new { htmlAttributes = new { @class = "form-control datepicker" } })
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
