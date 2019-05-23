@@ -9,5 +9,6 @@ namespace Budget.Web.Mvc.Models.BudgetVm
     {
         public Dictionary<DateTime, List<ScheduleItemVm>> Schedule { get; internal set; }
         public ScoreListVm Scores { get; internal set; }
+        public string TestField { get; set; }
     }
 }
