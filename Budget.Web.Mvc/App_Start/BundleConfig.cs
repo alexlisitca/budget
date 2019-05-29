@@ -11,11 +11,11 @@ namespace Budget.Web.Mvc
             bundles.Add(new StyleBundle("~/Content/bootstrap").Include(
                       "~/Content/bootstrap.css"));
 
-            bundles.Add(new StyleBundle("~/Content/bselect").Include(
-                      "~/Content/bootstrap-select.css"));
+            bundles.Add(new StyleBundle("~/Content/bgrid").Include(
+                      "~/Content/bootstrap-grid.css"));
 
-            bundles.Add(new StyleBundle("~/Content/datepicker").Include(
-                      "~/Content/bootstrap-datepicker.css"));
+            bundles.Add(new StyleBundle("~/Content/breboot").Include(
+                      "~/Content/bootstrap-reboot.css"));
 
             /*========================= JS ======================*/
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(

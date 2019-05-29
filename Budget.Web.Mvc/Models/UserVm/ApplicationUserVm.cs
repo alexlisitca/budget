@@ -6,11 +6,11 @@ namespace Budget.Web.Mvc.Models.UserVm
     public class ApplicationUserVm
     {
         [Required]
-        [DisplayName("Логин")]
+        [DisplayName("Login")]
         public string Email { get; set; }
 
         [Required]
-        [DisplayName("Пароль")]
+        [DisplayName("Password")]
         public string Password { get; set; }
     }
 }

@@ -1,0 +1,27 @@
+﻿@model Budget.Web.Mvc.Models.UserVm.ApplicationUserVm
+
+@{
+    ViewBag.Title = "Authorizing...";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row" style="min-height: 90vh;">
+    <div class="card" style="height: 300px;margin: auto;width: 400px;">
+        <div class="card-header">
+            Authorizing form
+        </div>
+        <div class="card-body">
+            @using (Html.BeginForm("Index", "Auth", FormMethod.Post, new { @class = "form-horizontal" }))
+            {
+                <div class="form-group">
+                    @Html.LabelFor(vm => vm.Email)
+                    @Html.TextBoxFor(vm => vm.Email, new { @class = "form-control  input-sm", type = "email", placeholder = "Email" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(vm => vm.Password)
+                    @Html.PasswordFor(vm => vm.Password, new { @class = "form-control  input-sm", placeholder = "Password" })
+                </div>
+                <button type="submit" class="btn btn-primary float-right">Signin</button>
+            }
+        </div>
+    </div>
+</div>

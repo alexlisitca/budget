@@ -5,35 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.PageTitle</title>
     @Styles.Render("~/Content/bootstrap")
-    @Styles.Render("~/Content/bselect")
-    @Styles.Render("~/Content/datepicker")
+    @Styles.Render("~/Content/bgrid")
+    @Styles.Render("~/Content/breboot")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Главная", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Сводка", "BudgetView")</li>
-                    <li>@Html.ActionLink("Планировщик", "ScheduleView")</li>
-                    <li>@Html.ActionLink("Счета", "ScoreView")</li>
-                    <li>@Html.ActionLink("Категории", "CategoryView")</li>
-                    <li>@Html.ActionLink("Финансовый учет", "FinancialView")</li>
-                </ul>
-            </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-warning">
+        @Html.ActionLink("Budget", "Index", "Auth", new { area = "" }, new { @class = "navbar-brand text-white" })
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li class="nav-item">@Html.ActionLink("Schedule", "ScheduleView", null, new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("Scores", "ScoreView", null, new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("Categories", "CategoryView", null, new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("Transactions", "FinancialView", null, new { @class = "nav-link" })</li>
+                }
+            </ul>
         </div>
-    </div>
+        @Html.Partial("_LoginPartial")
+        </nav>
 
-    <div class="container-fluid" style="margin-top:20px;">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12 col-sm-12">
+            <div class="col-12">
                 <h1 class="page-header">@ViewBag.PageTitle</h1>
                 @RenderBody()
             </div>
@@ -58,40 +55,40 @@
         });
 
         $("#scoreTypeDropDown")
-      .change(function () {
-          var str = "";
-          $("#scoreTypeDropDown option:selected").each(function () {
-              if ($(this).val() == "Credit") {
-                  $('#creditSection').show();
-              }
-              else {
-                  $('#creditSection').hide();
-              }
-          });
-      })
-      .change();
+            .change(function () {
+                var str = "";
+                $("#scoreTypeDropDown option:selected").each(function () {
+                    if ($(this).val() == "Credit") {
+                        $('#creditSection').show();
+                    }
+                    else {
+                        $('#creditSection').hide();
+                    }
+                });
+            })
+            .change();
 
         $("select#NewItem_TransactionType_SelectedItem")
-     .change(function () {
-         $("select#NewItem_TransactionType_SelectedItem option:selected").each(function () {
-             if ($(this).val() === "Incoming") {
-                 $('#outScoreDiv').hide();
-                 $('#inScoreDiv').show();
-                 $('#transferDiv').show();
-             }
-             else if ($(this).val() === "Outcoming") {
-                 $('#outScoreDiv').show();
-                 $('#inScoreDiv').hide();
-                 $('#transferDiv').show();
-             }
-             else {
-                 $('#outScoreDiv').show();
-                 $('#inScoreDiv').show();
-                 $('#transferDiv').hide();
-             }
-         });
-     })
-     .change();
+            .change(function () {
+                $("select#NewItem_TransactionType_SelectedItem option:selected").each(function () {
+                    if ($(this).val() === "Incoming") {
+                        $('#outScoreDiv').hide();
+                        $('#inScoreDiv').show();
+                        $('#transferDiv').show();
+                    }
+                    else if ($(this).val() === "Outcoming") {
+                        $('#outScoreDiv').show();
+                        $('#inScoreDiv').hide();
+                        $('#transferDiv').show();
+                    }
+                    else {
+                        $('#outScoreDiv').show();
+                        $('#inScoreDiv').show();
+                        $('#transferDiv').hide();
+                    }
+                });
+            })
+            .change();
     </script>
 </body>
 </html>

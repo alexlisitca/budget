@@ -34,38 +34,6 @@ namespace Budget.Web.Mvc.Controllers
             _budgetProvider = budgetProvider;
         }
 
-        #region User Section
-        [HttpGet]
-        [AllowAnonymous]
-        public ActionResult Index()
-        {
-            if (User.Identity.IsAuthenticated)
-                return RedirectToAction("BudgetView");
-            else
-                return View(new ApplicationUserVm());
-        }
-
-        // GET: Home
-        [HttpPost]
-        [AllowAnonymous]
-        public ActionResult Index(ApplicationUserVm model)
-        {
-            if ((model.Email == "cane4ekk@gmail.com") && (model.Password == "Rabbit!12Alex2016"))
-            {
-                FormsAuthentication.SetAuthCookie("cane4ekk@gmail.com", true);
-                return RedirectToAction("BudgetView");
-            }
-            return View(model);
-        }
-
-        [Authorize]
-        public ActionResult SignOut()
-        {
-            FormsAuthentication.SignOut();
-            return Redirect("~/Home/Index");
-        }
-        #endregion
-
         #region Score Section
         [Authorize]
         [HttpGet]
@@ -169,9 +137,9 @@ namespace Budget.Web.Mvc.Controllers
 
         [Authorize]
         [HttpGet]
-        public ActionResult BudgetView(Guid? Id)
+        public ActionResult Index(Guid? Id)
         {
-            return View("~/Views/Home/Budget/BudgetView.cshtml", _budgetProvider.GetViewModel());
+            return View(_budgetProvider.GetViewModel());
         }
     }
 }

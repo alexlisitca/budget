@@ -1,32 +1,84 @@
-﻿@model Budget.Web.Mvc.Models.UserVm.ApplicationUserVm
+﻿@using System.Linq;
+@model Budget.Web.Mvc.Models.BudgetVm.BudgetTotalVm
 
 @{
-    ViewBag.Title = "Главная";
+    ViewBag.PageTitle = "Сводка";
     Layout = "~/Views/Shared/_Layout.cshtml";
-}
-<div class="row" style="padding-top: 10%;">
-    <div class="col-md-3 col-md-offset-4">
-        <div class="panel panel-default">
-            <div class="panel-heading">Авторизация</div>
-            <div class="panel-body">
-                @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { @class = "form-horizontal" }))
-                {
-                    <div class="form-group">
-                        @Html.LabelFor(vm => vm.Email, new { @class = "col-sm-3 control-label" })
-                        <div class="col-sm-9">
-                            @Html.TextBoxFor(vm => vm.Email, new { @class = "form-control  input-sm", type = "email", placeholder = "Email" })
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        @Html.LabelFor(vm => vm.Password, new { @class = "col-sm-3 control-label" })
-                        <div class="col-sm-9">
-                            @Html.PasswordFor(vm => vm.Password, new { @class = "form-control  input-sm", placeholder = "Пароль" })
-                        </div>
-                    </div>
 
-                    <div class="form-group">
-                        <div class="col-sm-offset-5 col-md-offset-3 col-md-9 col-sm-7">
-                            <button type="submit" class="btn btn-default">Войти</button>
+    var totalSum = Model.Scores.AllRows.Where(x => x.ScoreType.SelectedItemText != "Credit").Sum(x => x.Balance);
+}
+
+<div class="row">
+    <div class="col-md-4">
+
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                Текущий баланс счетов
+                <span class="pull-right">@totalSum.ToString("0.00") руб.</span>
+            </div>
+            <div class="panel-body">
+                <ul class="list-group">
+                    @foreach (var score in Model.Scores.AllRows.OrderBy(x => x.OrderId))
+                    {
+                        <li class="list-group-item">
+                            <span>@score.Name</span>
+                            @if (score.ScoreType.SelectedItemText == "Credit")
+                            {
+                                <span class="text-danger pull-right"> @((score.CreditDebts - score.Balance).ToString("0.00")) руб.</span>
+                                <span class="text-success pull-right">@( (score.Balance + score.CreditLimit - score.CreditDebts ).ToString("0.00")) руб. __/__ </span>
+                            }
+                            else
+                            {
+                                <span class="text-success pull-right">@score.Balance.ToString("0.00") руб.</span>
+                            }
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-8">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                Предстоящие события
+            </div>
+            <div class="panel-body">
+                @foreach (var item in Model.Schedule.OrderBy(x => x.Key))
+                {
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <span>@item.Key.ToString("dd.MM.yyyy")</span>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="list-group">
+                                @foreach (var itemVal in item.Value)
+                                {
+                                    <li class="list-group-item">
+                                        <div class="row">
+                                            <div class="col-md-3">@itemVal.ShortName</div>
+                                            <div class="col-md-3">@itemVal.Description</div>
+                                            <div class="col-md-3">@itemVal.Amount</div>
+                                            @if (2 > 1)
+                                            {
+                                                <div class="col-md-3">
+                                                    <div class="pull-right"><span class="label label-success">Хватит</span></div>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <div class="col-md-3">
+                                                    <div class="pull-right">
+                                                        <span class="label label-danger">Не хватит</span>
+                                                    </div>
+                                                </div>
+                                            }
+                                        </div>
+                                    </li>
+                                }
+                            </ul>
+
                         </div>
                     </div>
                 }

@@ -1,0 +1,10 @@
+﻿<div class="my-2 my-sm-0">
+    @if (User.Identity.IsAuthenticated)
+    {
+        using (Html.BeginForm("SignOut", "Auth", FormMethod.Post, new { @class = "form-horizontal" }))
+        {
+            <span>Signin as <span style="text-decoration:underline">@User.Identity.Name</span></span>
+            <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Sign out</button>
+        }
+    }
+</div>
