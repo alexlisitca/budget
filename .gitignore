@@ -3,3 +3,8 @@
 ################################################################################
 
 /Budget.Domain.Core/obj
+/Budget.Domain.Interfaces/obj
+/Budget.Infrastructure.Business/obj
+/Budget.Infrastructure.Data/obj
+/Budget.Services.Interfaces/obj
+/.vs
