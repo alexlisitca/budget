@@ -1,6 +1,5 @@
 # budget-asp.net
 My project for control budget
 
-# Login/password:
-test@gmail.com
-123
+#Login: test@gmail.com
+#Password: 123
