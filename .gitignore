@@ -8,3 +8,11 @@
 /Budget.Infrastructure.Data/obj
 /Budget.Services.Interfaces/obj
 /.vs
+/Budget.Domain.Core/bin/Debug
+/Budget.Domain.Interfaces/bin/Debug
+/Budget.Infrastructure.Business/bin/Debug
+/Budget.Infrastructure.Data/bin/Debug
+/Budget.Web.Mvc/bin
+/Budget.Web.Mvc/obj/Debug
+/Budget.Services.Interfaces/bin/Debug
+/packages
