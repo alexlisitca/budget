@@ -1,0 +1,47 @@
+﻿@using System.Reflection
+@using System.Linq
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var props = (Model.GetType().GetGenericArguments()[0].GetProperties(BindingFlags.Instance | BindingFlags.Public) as PropertyInfo[]).Where(p => !p.GetMethod.IsVirtual);
+    var tableProps = props.Where(p => p.Name != "Id");
+    var idField = props.Single(p => p.Name == "Id");
+
+}
+
+@Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-sm btn-outline-primary", @style = "margin-bottom: 10px" })
+
+<table class="table">
+    <thead class="thead-light">
+        <tr>
+            @foreach (var item in tableProps)
+            {
+                <th>
+                    @item.Name
+                </th>
+            }
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var row in Model)
+        {
+        <tr>
+            @foreach (var col in tableProps)
+            {
+                <td>
+                    @col.GetValue(row)
+                </td>
+            }
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = idField.GetValue(row) }, new { @class = "btn btn-sm btn-outline-primary" })
+                @Html.ActionLink("Details", "Details", new { id = idField.GetValue(row) }, new { @class = "btn btn-sm btn-outline-info" })
+                @Html.ActionLink("Delete", "Delete", new { id = idField.GetValue(row) }, new { @class = "btn btn-sm btn-outline-danger" })
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+@RenderBody()
+
+
+

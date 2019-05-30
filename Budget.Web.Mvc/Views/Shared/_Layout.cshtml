@@ -18,10 +18,10 @@
             <ul class="navbar-nav">
                 @if (User.Identity.IsAuthenticated)
                 {
-                    <li class="nav-item">@Html.ActionLink("Schedule", "ScheduleView", null, new { @class = "nav-link" })</li>
-                    <li class="nav-item">@Html.ActionLink("Scores", "ScoreView", null, new { @class = "nav-link" })</li>
-                    <li class="nav-item">@Html.ActionLink("Categories", "CategoryView", null, new { @class = "nav-link" })</li>
-                    <li class="nav-item">@Html.ActionLink("Transactions", "FinancialView", null, new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("Schedule", "ScheduleView", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("Scores", "Index", "Scores", new { area = "Entities" }, new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("Categories", "Index", "Categories", new { area = "Entities" }, new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("Transactions", "Index", "Transactions", new { area = "Entities" }, new { @class = "nav-link" })</li>
                 }
             </ul>
         </div>
@@ -31,7 +31,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <h1 class="page-header">@ViewBag.PageTitle</h1>
+                <h2 class="page-header">@ViewBag.PageTitle</h2>
                 @RenderBody()
             </div>
         </div>

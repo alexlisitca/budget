@@ -181,6 +181,23 @@
     </Content>
     <Content Include="Global.asax" />
     <Content Include="packages.config" />
+    <Content Include="Areas\Entities\Views\web.config" />
+    <Content Include="Areas\Entities\Views\Scores\Create.cshtml" />
+    <Content Include="Areas\Entities\Views\Scores\Delete.cshtml" />
+    <Content Include="Areas\Entities\Views\Scores\Details.cshtml" />
+    <Content Include="Areas\Entities\Views\Scores\Edit.cshtml" />
+    <Content Include="Areas\Entities\Views\Scores\Index.cshtml" />
+    <Content Include="Areas\Entities\Views\Transactions\Create.cshtml" />
+    <Content Include="Areas\Entities\Views\Transactions\Delete.cshtml" />
+    <Content Include="Areas\Entities\Views\Transactions\Details.cshtml" />
+    <Content Include="Areas\Entities\Views\Transactions\Edit.cshtml" />
+    <Content Include="Areas\Entities\Views\Transactions\Index.cshtml" />
+    <Content Include="Areas\Entities\Views\Categories\Create.cshtml" />
+    <Content Include="Areas\Entities\Views\Categories\Delete.cshtml" />
+    <Content Include="Areas\Entities\Views\Categories\Details.cshtml" />
+    <Content Include="Areas\Entities\Views\Categories\Edit.cshtml" />
+    <Content Include="Areas\Entities\Views\Categories\Index.cshtml" />
+    <Content Include="Areas\Entities\Views\Shared\_ListLayout.cshtml" />
     <None Include="Properties\PublishProfiles\myalexbudget.pubxml" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -252,6 +269,10 @@
     <Compile Include="App_Start\DependencyInjection\AutofacConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Entities\Controllers\CategoriesController.cs" />
+    <Compile Include="Areas\Entities\Controllers\ScoresController.cs" />
+    <Compile Include="Areas\Entities\Controllers\TransactionsController.cs" />
+    <Compile Include="Areas\Entities\EntitiesAreaRegistration.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Models\BudgetVm\BudgetTotalVm.cs" />
@@ -283,6 +304,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Entities\Models\" />
     <Folder Include="Images\" />
     <Folder Include="Views\Shared\DisplayTemplates\" />
   </ItemGroup>
